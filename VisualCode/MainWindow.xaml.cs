@@ -1,11 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace VisualCode
 {
     public partial class MainWindow
     {
+        private Point lastPosition;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -16,6 +19,10 @@ namespace VisualCode
             if (e.Data.GetDataPresent("Object"))
             {
                 e.Effects = e.KeyStates == DragDropKeyStates.ControlKey ? DragDropEffects.Copy : DragDropEffects.Move;
+                Point position = e.GetPosition(this);
+                lblInfo.Content = string.Format("DragEventArgs.GetPosition: {0}, {1}", position.X, position.Y);
+                lastPosition = position;
+
             }
         }
 
@@ -32,8 +39,8 @@ namespace VisualCode
             if (e.KeyStates == DragDropKeyStates.ControlKey &&
                 e.AllowedEffects.HasFlag(DragDropEffects.Copy))
             {
-                var circle = new ClassView((ClassView)element);
-                panel.Children.Add(circle);
+                var classView = new ClassView((ClassView)element);
+                panel.Children.Add(classView);
                 e.Effects = DragDropEffects.Copy;
             }
             else if (e.AllowedEffects.HasFlag(DragDropEffects.Move))

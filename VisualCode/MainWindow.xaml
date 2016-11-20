@@ -16,6 +16,8 @@
             AllowDrop="True"
             DragOver="panel_DragOver"
             Drop="panel_Drop">
+            <Label Name="lblInfo1" Content="Info 1"/>
+            <Label Name="lblInfo" Content="Info 2"/>
             <TextBox Width="Auto" Margin="2" Text="green" />
             <local:ClassView Margin="5" />
             <local:ClassView Margin="5" />
