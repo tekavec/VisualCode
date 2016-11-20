@@ -6,6 +6,8 @@ namespace VisualCode
 {
     public partial class ClassView
     {
+        private Brush previousFill;
+
         public ClassView()
         {
             InitializeComponent();
@@ -80,6 +82,24 @@ namespace VisualCode
                 }
             }
             e.Handled = true;
+        }
+
+        protected override void OnDragEnter(DragEventArgs e)
+        {
+            base.OnDragEnter(e);
+            previousFill = ClassViewUi.Fill;
+            if (!e.Data.GetDataPresent(DataFormats.StringFormat)) return;
+            var dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+            var converter = new BrushConverter();
+            if (dataString == null || !converter.IsValid(dataString)) return;
+            var newFill = (Brush)converter.ConvertFromString(dataString);
+            ClassViewUi.Fill = newFill;
+        }
+
+        protected override void OnDragLeave(DragEventArgs e)
+        {
+            base.OnDragLeave(e);
+            ClassViewUi.Fill = previousFill;
         }
     }
 }

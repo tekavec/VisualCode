@@ -10,13 +10,21 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="WhiteSmoke">
-            <TextBox Width="Auto" Margin="2" Text="green"/>
-            <local:ClassView Margin="5"></local:ClassView>
-            <local:ClassView Margin="5"></local:ClassView>
+        <StackPanel
+            Grid.Column="0"
+            Background="WhiteSmoke"
+            AllowDrop="True"
+            DragOver="panel_DragOver"
+            Drop="panel_Drop">
+            <TextBox Width="Auto" Margin="2" Text="green" />
+            <local:ClassView Margin="5" />
+            <local:ClassView Margin="5" />
         </StackPanel>
-        <StackPanel Grid.Column="1" Background="Bisque">
-        </StackPanel>
-
+        <StackPanel
+            Grid.Column="1"
+            Background="Bisque"
+            AllowDrop="True"
+            DragOver="panel_DragOver"
+            Drop="panel_Drop" />
     </Grid>
 </Window>
