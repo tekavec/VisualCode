@@ -28,7 +28,7 @@ namespace VisualCode
 
         private void PopulateData()
         {
-            this.ClassDiagramView = new ClassDiagramView();
+            ClassDiagramView = new ClassDiagramView();
             var class1 = CreateClass("Class 1", new Point(25, 25));
             var class2 = CreateClass("Class 2", new Point(250, 25));
         }

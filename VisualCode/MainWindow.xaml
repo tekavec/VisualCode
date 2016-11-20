@@ -4,52 +4,19 @@
         xmlns:local="clr-namespace:VisualCode"
         xmlns:core="clr-namespace:VisualCode.Core;assembly=VisualCode.Core"
         Title="MainWindow" Height="900" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-    <Window.DataContext>
-        <local:MainWindowViewModel />
-    </Window.DataContext>
-    
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type core:ClassViewModel}"> 
-            <Grid Width="120" Height="60">
-                <Rectangle
-                    Stroke="DarkBlue"
-                    Fill="White"
-                    RadiusX="3"
-                    RadiusY="3" />
-                
-                <Grid Margin="-10" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" MinWidth="10" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    
-                    <TextBlock
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        Text="{Binding Name}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
-                </Grid>
-            </Grid>
-        </DataTemplate>
-    </Window.Resources>
-    
-    <ScrollViewer
-        HorizontalScrollBarVisibility="Auto"
-        Focusable="False">
+        <StackPanel Grid.Column="0" Background="WhiteSmoke">
+            <TextBox Width="Auto" Margin="2" Text="green"/>
+            <local:ClassView Margin="5"></local:ClassView>
+            <local:ClassView Margin="5"></local:ClassView>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Background="Bisque">
+        </StackPanel>
 
-        <core:ClassDiagramView
-            x:Name="ClassDiagramView"
-            Width="2000"
-            Height="2000" />
-
-    </ScrollViewer>
+    </Grid>
 </Window>
